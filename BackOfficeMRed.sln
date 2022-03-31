@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOfficeMRed", "BackOfficeMRed\BackOfficeMRed.csproj", "{DD6BC78A-37EC-443F-9B23-9EA20BCACCA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOfficeMRed.Tests", "BackOfficeMRed.Tests\BackOfficeMRed.Tests.csproj", "{9C018591-E144-4B7C-84AE-7B8632F1EDF7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD6BC78A-37EC-443F-9B23-9EA20BCACCA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD6BC78A-37EC-443F-9B23-9EA20BCACCA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD6BC78A-37EC-443F-9B23-9EA20BCACCA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD6BC78A-37EC-443F-9B23-9EA20BCACCA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C018591-E144-4B7C-84AE-7B8632F1EDF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C018591-E144-4B7C-84AE-7B8632F1EDF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C018591-E144-4B7C-84AE-7B8632F1EDF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C018591-E144-4B7C-84AE-7B8632F1EDF7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6289C524-4D52-4E22-BBA4-99336C46EF83}
+	EndGlobalSection
+EndGlobal

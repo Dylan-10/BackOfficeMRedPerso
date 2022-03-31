@@ -1,0 +1,1613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MRedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Actualite">
+          <Key>
+            <PropertyRef Name="ActualiteId" />
+          </Key>
+          <Property Name="ActualiteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActualiteTypeId" Type="int" Nullable="false" />
+          <Property Name="LangueId" Type="int" Nullable="false" />
+          <Property Name="DateCreation" Type="datetime" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SEOCourt" Type="nvarchar" MaxLength="50" />
+          <Property Name="SEOLong" Type="nvarchar(max)" />
+          <Property Name="Contenu" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ActualiteType">
+          <Key>
+            <PropertyRef Name="ActualiteTypeId" />
+          </Key>
+          <Property Name="ActualiteTypeId" Type="int" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="CategorieId" />
+          </Key>
+          <Property Name="CategorieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EstActif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategorieCritere">
+          <Key>
+            <PropertyRef Name="CritereCategorieId" />
+          </Key>
+          <Property Name="CritereCategorieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategorieId" Type="int" Nullable="false" />
+          <Property Name="CritereId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategorieLangue">
+          <Key>
+            <PropertyRef Name="CategorieLangueId" />
+          </Key>
+          <Property Name="CategorieLangueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategorieId" Type="int" Nullable="false" />
+          <Property Name="LangueId" Type="int" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImageLien" Type="nvarchar" MaxLength="50" />
+          <Property Name="SEOCourt" Type="nvarchar(max)" />
+          <Property Name="SEOLong" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ContenuHTML" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ContenuHTML">
+          <Key>
+            <PropertyRef Name="ContenuHTMLId" />
+          </Key>
+          <Property Name="ContenuHTMLId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContenuHTMLLangue">
+          <Key>
+            <PropertyRef Name="ContenuHTMLLangueId" />
+          </Key>
+          <Property Name="ContenuHTMLLangueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContenuHMTLId" Type="int" Nullable="false" />
+          <Property Name="LangueId" Type="int" Nullable="false" />
+          <Property Name="ContenuHTML" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Critere">
+          <Key>
+            <PropertyRef Name="CritereId" />
+          </Key>
+          <Property Name="CritereId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CritereFamilleId" Type="int" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CritereFamille">
+          <Key>
+            <PropertyRef Name="CritereFamilleId" />
+          </Key>
+          <Property Name="CritereFamilleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CritereFamilleLangue">
+          <Key>
+            <PropertyRef Name="CritereFamilleLangueId" />
+          </Key>
+          <Property Name="CritereFamilleLangueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CritereFamilleId" Type="int" Nullable="false" />
+          <Property Name="LangueId" Type="int" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CritereLangue">
+          <Key>
+            <PropertyRef Name="CritereLangueId" />
+          </Key>
+          <Property Name="CritereLangueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CritereId" Type="int" Nullable="false" />
+          <Property Name="LangueId" Type="int" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Unite" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ElementCarrousel">
+          <Key>
+            <PropertyRef Name="ElementCarrouselId" />
+          </Key>
+          <Property Name="ElementCarrouselId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LangueId" Type="int" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Titre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contenu" Type="nvarchar" MaxLength="200" />
+          <Property Name="TexteBouton" Type="nvarchar" MaxLength="20" />
+          <Property Name="LienBouton" Type="nvarchar" MaxLength="200" />
+          <Property Name="LienImage" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Enseigne">
+          <Key>
+            <PropertyRef Name="EnseigneId" />
+          </Key>
+          <Property Name="EnseigneId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="LienImage" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="LienEnseigne" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Langue">
+          <Key>
+            <PropertyRef Name="LangueId" />
+          </Key>
+          <Property Name="LangueId" Type="int" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuParentId" Type="int" />
+          <Property Name="LangueId" Type="int" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lien" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prenom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Societe" Type="varchar" MaxLength="100" />
+          <Property Name="Objet" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telephone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Mail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Contenu" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Produit">
+          <Key>
+            <PropertyRef Name="ProduitId" />
+          </Key>
+          <Property Name="ProduitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategorieId" Type="int" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Reference" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EstActif" Type="bit" Nullable="false" />
+          <Property Name="EAN" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="ProduitIdJAJA" Type="int" />
+          <Property Name="SerieId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProduitCritere">
+          <Key>
+            <PropertyRef Name="CritereProduitId" />
+          </Key>
+          <Property Name="CritereProduitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProduitId" Type="int" Nullable="false" />
+          <Property Name="CritereId" Type="int" Nullable="false" />
+          <Property Name="LangueId" Type="int" Nullable="false" />
+          <Property Name="Valeur" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProduitImage">
+          <Key>
+            <PropertyRef Name="ProduitImageId" />
+          </Key>
+          <Property Name="ProduitImageId" Type="int" Nullable="false" />
+          <Property Name="ProduitId" Type="int" Nullable="false" />
+          <Property Name="lien" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProduitLangue">
+          <Key>
+            <PropertyRef Name="ProduitLangueId" />
+          </Key>
+          <Property Name="ProduitLangueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProduitId" Type="int" Nullable="false" />
+          <Property Name="LangueId" Type="int" Nullable="false" />
+          <Property Name="SEOCourt" Type="nvarchar(max)" />
+          <Property Name="SEOLong" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ContenuHTML" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Serie">
+          <Key>
+            <PropertyRef Name="SerieId" />
+          </Key>
+          <Property Name="SerieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EstActif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SerieLangue">
+          <Key>
+            <PropertyRef Name="SerieLangueId" />
+          </Key>
+          <Property Name="SerieLangueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SerieId" Type="int" Nullable="false" />
+          <Property Name="LangueId" Type="int" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImageLien" Type="nvarchar" MaxLength="50" />
+          <Property Name="SEOCourt" Type="nvarchar" MaxLength="50" />
+          <Property Name="SEOLong" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ContenuHTML" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_Actualite_ActualiteType">
+          <End Role="ActualiteType" Type="Self.ActualiteType" Multiplicity="1" />
+          <End Role="Actualite" Type="Self.Actualite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActualiteType">
+              <PropertyRef Name="ActualiteTypeId" />
+            </Principal>
+            <Dependent Role="Actualite">
+              <PropertyRef Name="ActualiteTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actualite_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Actualite" Type="Self.Actualite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="Actualite">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategorieCritere_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="CategorieCritere" Type="Self.CategorieCritere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="CategorieId" />
+            </Principal>
+            <Dependent Role="CategorieCritere">
+              <PropertyRef Name="CategorieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategorieCritere_Critere">
+          <End Role="Critere" Type="Self.Critere" Multiplicity="1" />
+          <End Role="CategorieCritere" Type="Self.CategorieCritere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Critere">
+              <PropertyRef Name="CritereId" />
+            </Principal>
+            <Dependent Role="CategorieCritere">
+              <PropertyRef Name="CritereId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategorieLangue_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="CategorieLangue" Type="Self.CategorieLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="CategorieId" />
+            </Principal>
+            <Dependent Role="CategorieLangue">
+              <PropertyRef Name="CategorieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategorieLangue_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="CategorieLangue" Type="Self.CategorieLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="CategorieLangue">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContenuHTMLLangue_ContenuHTML">
+          <End Role="ContenuHTML" Type="Self.ContenuHTML" Multiplicity="1" />
+          <End Role="ContenuHTMLLangue" Type="Self.ContenuHTMLLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContenuHTML">
+              <PropertyRef Name="ContenuHTMLId" />
+            </Principal>
+            <Dependent Role="ContenuHTMLLangue">
+              <PropertyRef Name="ContenuHMTLId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContenuHTMLLangue_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="ContenuHTMLLangue" Type="Self.ContenuHTMLLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="ContenuHTMLLangue">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Critere_CritereFamille">
+          <End Role="CritereFamille" Type="Self.CritereFamille" Multiplicity="1" />
+          <End Role="Critere" Type="Self.Critere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CritereFamille">
+              <PropertyRef Name="CritereFamilleId" />
+            </Principal>
+            <Dependent Role="Critere">
+              <PropertyRef Name="CritereFamilleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CritereFamilleLangue_CritereFamille">
+          <End Role="CritereFamille" Type="Self.CritereFamille" Multiplicity="1" />
+          <End Role="CritereFamilleLangue" Type="Self.CritereFamilleLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CritereFamille">
+              <PropertyRef Name="CritereFamilleId" />
+            </Principal>
+            <Dependent Role="CritereFamilleLangue">
+              <PropertyRef Name="CritereFamilleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CritereFamilleLangue_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="CritereFamilleLangue" Type="Self.CritereFamilleLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="CritereFamilleLangue">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CritereLangue_Critere">
+          <End Role="Critere" Type="Self.Critere" Multiplicity="1" />
+          <End Role="CritereLangue" Type="Self.CritereLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Critere">
+              <PropertyRef Name="CritereId" />
+            </Principal>
+            <Dependent Role="CritereLangue">
+              <PropertyRef Name="CritereId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CritereLangue_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="CritereLangue" Type="Self.CritereLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="CritereLangue">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ElementCarrousel_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="ElementCarrousel" Type="Self.ElementCarrousel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="ElementCarrousel">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Menu1" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="Menu1">
+              <PropertyRef Name="MenuParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Produit_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Produit" Type="Self.Produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="CategorieId" />
+            </Principal>
+            <Dependent Role="Produit">
+              <PropertyRef Name="CategorieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProduitCritere_Critere">
+          <End Role="Critere" Type="Self.Critere" Multiplicity="1" />
+          <End Role="ProduitCritere" Type="Self.ProduitCritere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Critere">
+              <PropertyRef Name="CritereId" />
+            </Principal>
+            <Dependent Role="ProduitCritere">
+              <PropertyRef Name="CritereId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProduitCritere_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="ProduitCritere" Type="Self.ProduitCritere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="ProduitCritere">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProduitCritere_Produit">
+          <End Role="Produit" Type="Self.Produit" Multiplicity="1" />
+          <End Role="ProduitCritere" Type="Self.ProduitCritere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produit">
+              <PropertyRef Name="ProduitId" />
+            </Principal>
+            <Dependent Role="ProduitCritere">
+              <PropertyRef Name="ProduitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProduitImage_Produit">
+          <End Role="Produit" Type="Self.Produit" Multiplicity="1" />
+          <End Role="ProduitImage" Type="Self.ProduitImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produit">
+              <PropertyRef Name="ProduitId" />
+            </Principal>
+            <Dependent Role="ProduitImage">
+              <PropertyRef Name="ProduitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProduitLangue_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="ProduitLangue" Type="Self.ProduitLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="ProduitLangue">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProduitLangue_Produit">
+          <End Role="Produit" Type="Self.Produit" Multiplicity="1" />
+          <End Role="ProduitLangue" Type="Self.ProduitLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produit">
+              <PropertyRef Name="ProduitId" />
+            </Principal>
+            <Dependent Role="ProduitLangue">
+              <PropertyRef Name="ProduitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerieLangue_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="SerieLangue" Type="Self.SerieLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="SerieLangue">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerieLangue_Serie">
+          <End Role="Serie" Type="Self.Serie" Multiplicity="1" />
+          <End Role="SerieLangue" Type="Self.SerieLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Serie">
+              <PropertyRef Name="SerieId" />
+            </Principal>
+            <Dependent Role="SerieLangue">
+              <PropertyRef Name="SerieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MRedModelStoreContainer">
+          <EntitySet Name="Actualite" EntityType="Self.Actualite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActualiteType" EntityType="Self.ActualiteType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categorie" EntityType="Self.Categorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategorieCritere" EntityType="Self.CategorieCritere" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategorieLangue" EntityType="Self.CategorieLangue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContenuHTML" EntityType="Self.ContenuHTML" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContenuHTMLLangue" EntityType="Self.ContenuHTMLLangue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Critere" EntityType="Self.Critere" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CritereFamille" EntityType="Self.CritereFamille" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CritereFamilleLangue" EntityType="Self.CritereFamilleLangue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CritereLangue" EntityType="Self.CritereLangue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ElementCarrousel" EntityType="Self.ElementCarrousel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enseigne" EntityType="Self.Enseigne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Langue" EntityType="Self.Langue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Produit" EntityType="Self.Produit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProduitCritere" EntityType="Self.ProduitCritere" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProduitImage" EntityType="Self.ProduitImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProduitLangue" EntityType="Self.ProduitLangue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Serie" EntityType="Self.Serie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SerieLangue" EntityType="Self.SerieLangue" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Actualite_ActualiteType" Association="Self.FK_Actualite_ActualiteType">
+            <End Role="ActualiteType" EntitySet="ActualiteType" />
+            <End Role="Actualite" EntitySet="Actualite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actualite_Langue" Association="Self.FK_Actualite_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Actualite" EntitySet="Actualite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategorieCritere_Categorie" Association="Self.FK_CategorieCritere_Categorie">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="CategorieCritere" EntitySet="CategorieCritere" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategorieCritere_Critere" Association="Self.FK_CategorieCritere_Critere">
+            <End Role="Critere" EntitySet="Critere" />
+            <End Role="CategorieCritere" EntitySet="CategorieCritere" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategorieLangue_Categorie" Association="Self.FK_CategorieLangue_Categorie">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="CategorieLangue" EntitySet="CategorieLangue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategorieLangue_Langue" Association="Self.FK_CategorieLangue_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="CategorieLangue" EntitySet="CategorieLangue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContenuHTMLLangue_ContenuHTML" Association="Self.FK_ContenuHTMLLangue_ContenuHTML">
+            <End Role="ContenuHTML" EntitySet="ContenuHTML" />
+            <End Role="ContenuHTMLLangue" EntitySet="ContenuHTMLLangue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContenuHTMLLangue_Langue" Association="Self.FK_ContenuHTMLLangue_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="ContenuHTMLLangue" EntitySet="ContenuHTMLLangue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Critere_CritereFamille" Association="Self.FK_Critere_CritereFamille">
+            <End Role="CritereFamille" EntitySet="CritereFamille" />
+            <End Role="Critere" EntitySet="Critere" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CritereFamilleLangue_CritereFamille" Association="Self.FK_CritereFamilleLangue_CritereFamille">
+            <End Role="CritereFamille" EntitySet="CritereFamille" />
+            <End Role="CritereFamilleLangue" EntitySet="CritereFamilleLangue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CritereFamilleLangue_Langue" Association="Self.FK_CritereFamilleLangue_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="CritereFamilleLangue" EntitySet="CritereFamilleLangue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CritereLangue_Critere" Association="Self.FK_CritereLangue_Critere">
+            <End Role="Critere" EntitySet="Critere" />
+            <End Role="CritereLangue" EntitySet="CritereLangue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CritereLangue_Langue" Association="Self.FK_CritereLangue_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="CritereLangue" EntitySet="CritereLangue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ElementCarrousel_Langue" Association="Self.FK_ElementCarrousel_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="ElementCarrousel" EntitySet="ElementCarrousel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Langue" Association="Self.FK_Menu_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Menu" Association="Self.FK_Menu_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Menu1" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Produit_Categorie" Association="Self.FK_Produit_Categorie">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Produit" EntitySet="Produit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProduitCritere_Critere" Association="Self.FK_ProduitCritere_Critere">
+            <End Role="Critere" EntitySet="Critere" />
+            <End Role="ProduitCritere" EntitySet="ProduitCritere" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProduitCritere_Langue" Association="Self.FK_ProduitCritere_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="ProduitCritere" EntitySet="ProduitCritere" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProduitCritere_Produit" Association="Self.FK_ProduitCritere_Produit">
+            <End Role="Produit" EntitySet="Produit" />
+            <End Role="ProduitCritere" EntitySet="ProduitCritere" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProduitImage_Produit" Association="Self.FK_ProduitImage_Produit">
+            <End Role="Produit" EntitySet="Produit" />
+            <End Role="ProduitImage" EntitySet="ProduitImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProduitLangue_Langue" Association="Self.FK_ProduitLangue_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="ProduitLangue" EntitySet="ProduitLangue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProduitLangue_Produit" Association="Self.FK_ProduitLangue_Produit">
+            <End Role="Produit" EntitySet="Produit" />
+            <End Role="ProduitLangue" EntitySet="ProduitLangue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerieLangue_Langue" Association="Self.FK_SerieLangue_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="SerieLangue" EntitySet="SerieLangue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerieLangue_Serie" Association="Self.FK_SerieLangue_Serie">
+            <End Role="Serie" EntitySet="Serie" />
+            <End Role="SerieLangue" EntitySet="SerieLangue" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MRedModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Actualite">
+          <Key>
+            <PropertyRef Name="ActualiteId" />
+          </Key>
+          <Property Name="ActualiteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActualiteTypeId" Type="Int32" Nullable="false" />
+          <Property Name="LangueId" Type="Int32" Nullable="false" />
+          <Property Name="DateCreation" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SEOCourt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SEOLong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Contenu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ActualiteType" Relationship="Self.FK_Actualite_ActualiteType" FromRole="Actualite" ToRole="ActualiteType" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK_Actualite_Langue" FromRole="Actualite" ToRole="Langue" />
+        </EntityType>
+        <EntityType Name="ActualiteType">
+          <Key>
+            <PropertyRef Name="ActualiteTypeId" />
+          </Key>
+          <Property Name="ActualiteTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Actualites" Relationship="Self.FK_Actualite_ActualiteType" FromRole="ActualiteType" ToRole="Actualite" />
+        </EntityType>
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="CategorieId" />
+          </Key>
+          <Property Name="CategorieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EstActif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CategorieCriteres" Relationship="Self.FK_CategorieCritere_Categorie" FromRole="Categorie" ToRole="CategorieCritere" />
+          <NavigationProperty Name="CategorieLangues" Relationship="Self.FK_CategorieLangue_Categorie" FromRole="Categorie" ToRole="CategorieLangue" />
+          <NavigationProperty Name="Produits" Relationship="Self.FK_Produit_Categorie" FromRole="Categorie" ToRole="Produit" />
+        </EntityType>
+        <EntityType Name="CategorieCritere">
+          <Key>
+            <PropertyRef Name="CritereCategorieId" />
+          </Key>
+          <Property Name="CritereCategorieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategorieId" Type="Int32" Nullable="false" />
+          <Property Name="CritereId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK_CategorieCritere_Categorie" FromRole="CategorieCritere" ToRole="Categorie" />
+          <NavigationProperty Name="Critere" Relationship="Self.FK_CategorieCritere_Critere" FromRole="CategorieCritere" ToRole="Critere" />
+        </EntityType>
+        <EntityType Name="CategorieLangue">
+          <Key>
+            <PropertyRef Name="CategorieLangueId" />
+          </Key>
+          <Property Name="CategorieLangueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategorieId" Type="Int32" Nullable="false" />
+          <Property Name="LangueId" Type="Int32" Nullable="false" />
+          <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImageLien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SEOCourt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SEOLong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContenuHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK_CategorieLangue_Categorie" FromRole="CategorieLangue" ToRole="Categorie" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK_CategorieLangue_Langue" FromRole="CategorieLangue" ToRole="Langue" />
+        </EntityType>
+        <EntityType Name="ContenuHTML">
+          <Key>
+            <PropertyRef Name="ContenuHTMLId" />
+          </Key>
+          <Property Name="ContenuHTMLId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ContenuHTMLLangues" Relationship="Self.FK_ContenuHTMLLangue_ContenuHTML" FromRole="ContenuHTML" ToRole="ContenuHTMLLangue" />
+        </EntityType>
+        <EntityType Name="ContenuHTMLLangue">
+          <Key>
+            <PropertyRef Name="ContenuHTMLLangueId" />
+          </Key>
+          <Property Name="ContenuHTMLLangueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContenuHMTLId" Type="Int32" Nullable="false" />
+          <Property Name="LangueId" Type="Int32" Nullable="false" />
+          <Property Name="ContenuHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ContenuHTML1" Relationship="Self.FK_ContenuHTMLLangue_ContenuHTML" FromRole="ContenuHTMLLangue" ToRole="ContenuHTML" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK_ContenuHTMLLangue_Langue" FromRole="ContenuHTMLLangue" ToRole="Langue" />
+        </EntityType>
+        <EntityType Name="Critere">
+          <Key>
+            <PropertyRef Name="CritereId" />
+          </Key>
+          <Property Name="CritereId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CritereFamilleId" Type="Int32" Nullable="false" />
+          <Property Name="Libelle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CategorieCriteres" Relationship="Self.FK_CategorieCritere_Critere" FromRole="Critere" ToRole="CategorieCritere" />
+          <NavigationProperty Name="CritereFamille" Relationship="Self.FK_Critere_CritereFamille" FromRole="Critere" ToRole="CritereFamille" />
+          <NavigationProperty Name="CritereLangues" Relationship="Self.FK_CritereLangue_Critere" FromRole="Critere" ToRole="CritereLangue" />
+          <NavigationProperty Name="ProduitCriteres" Relationship="Self.FK_ProduitCritere_Critere" FromRole="Critere" ToRole="ProduitCritere" />
+        </EntityType>
+        <EntityType Name="CritereFamille">
+          <Key>
+            <PropertyRef Name="CritereFamilleId" />
+          </Key>
+          <Property Name="CritereFamilleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Libelle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Criteres" Relationship="Self.FK_Critere_CritereFamille" FromRole="CritereFamille" ToRole="Critere" />
+          <NavigationProperty Name="CritereFamilleLangues" Relationship="Self.FK_CritereFamilleLangue_CritereFamille" FromRole="CritereFamille" ToRole="CritereFamilleLangue" />
+        </EntityType>
+        <EntityType Name="CritereFamilleLangue">
+          <Key>
+            <PropertyRef Name="CritereFamilleLangueId" />
+          </Key>
+          <Property Name="CritereFamilleLangueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CritereFamilleId" Type="Int32" Nullable="false" />
+          <Property Name="LangueId" Type="Int32" Nullable="false" />
+          <Property Name="Libelle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CritereFamille" Relationship="Self.FK_CritereFamilleLangue_CritereFamille" FromRole="CritereFamilleLangue" ToRole="CritereFamille" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK_CritereFamilleLangue_Langue" FromRole="CritereFamilleLangue" ToRole="Langue" />
+        </EntityType>
+        <EntityType Name="CritereLangue">
+          <Key>
+            <PropertyRef Name="CritereLangueId" />
+          </Key>
+          <Property Name="CritereLangueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CritereId" Type="Int32" Nullable="false" />
+          <Property Name="LangueId" Type="Int32" Nullable="false" />
+          <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Unite" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Critere" Relationship="Self.FK_CritereLangue_Critere" FromRole="CritereLangue" ToRole="Critere" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK_CritereLangue_Langue" FromRole="CritereLangue" ToRole="Langue" />
+        </EntityType>
+        <EntityType Name="ElementCarrousel">
+          <Key>
+            <PropertyRef Name="ElementCarrouselId" />
+          </Key>
+          <Property Name="ElementCarrouselId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LangueId" Type="Int32" Nullable="false" />
+          <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Titre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contenu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TexteBouton" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LienBouton" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LienImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK_ElementCarrousel_Langue" FromRole="ElementCarrousel" ToRole="Langue" />
+        </EntityType>
+        <EntityType Name="Enseigne">
+          <Key>
+            <PropertyRef Name="EnseigneId" />
+          </Key>
+          <Property Name="EnseigneId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Libelle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LienImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LienEnseigne" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Langue">
+          <Key>
+            <PropertyRef Name="LangueId" />
+          </Key>
+          <Property Name="LangueId" Type="Int32" Nullable="false" />
+          <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Actualites" Relationship="Self.FK_Actualite_Langue" FromRole="Langue" ToRole="Actualite" />
+          <NavigationProperty Name="CategorieLangues" Relationship="Self.FK_CategorieLangue_Langue" FromRole="Langue" ToRole="CategorieLangue" />
+          <NavigationProperty Name="ContenuHTMLLangues" Relationship="Self.FK_ContenuHTMLLangue_Langue" FromRole="Langue" ToRole="ContenuHTMLLangue" />
+          <NavigationProperty Name="CritereFamilleLangues" Relationship="Self.FK_CritereFamilleLangue_Langue" FromRole="Langue" ToRole="CritereFamilleLangue" />
+          <NavigationProperty Name="CritereLangues" Relationship="Self.FK_CritereLangue_Langue" FromRole="Langue" ToRole="CritereLangue" />
+          <NavigationProperty Name="ElementCarrousels" Relationship="Self.FK_ElementCarrousel_Langue" FromRole="Langue" ToRole="ElementCarrousel" />
+          <NavigationProperty Name="Menus" Relationship="Self.FK_Menu_Langue" FromRole="Langue" ToRole="Menu" />
+          <NavigationProperty Name="ProduitCriteres" Relationship="Self.FK_ProduitCritere_Langue" FromRole="Langue" ToRole="ProduitCritere" />
+          <NavigationProperty Name="ProduitLangues" Relationship="Self.FK_ProduitLangue_Langue" FromRole="Langue" ToRole="ProduitLangue" />
+          <NavigationProperty Name="SerieLangues" Relationship="Self.FK_SerieLangue_Langue" FromRole="Langue" ToRole="SerieLangue" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuParentId" Type="Int32" />
+          <Property Name="LangueId" Type="Int32" Nullable="false" />
+          <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lien" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK_Menu_Langue" FromRole="Menu" ToRole="Langue" />
+          <NavigationProperty Name="Menu1" Relationship="Self.FK_Menu_Menu" FromRole="Menu" ToRole="Menu1" />
+          <NavigationProperty Name="Menu2" Relationship="Self.FK_Menu_Menu" FromRole="Menu1" ToRole="Menu" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Societe" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Objet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contenu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Produit">
+          <Key>
+            <PropertyRef Name="ProduitId" />
+          </Key>
+          <Property Name="ProduitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategorieId" Type="Int32" Nullable="false" />
+          <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Reference" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EstActif" Type="Boolean" Nullable="false" />
+          <Property Name="EAN" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProduitIdJAJA" Type="Int32" />
+          <Property Name="SerieId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK_Produit_Categorie" FromRole="Produit" ToRole="Categorie" />
+          <NavigationProperty Name="ProduitCriteres" Relationship="Self.FK_ProduitCritere_Produit" FromRole="Produit" ToRole="ProduitCritere" />
+          <NavigationProperty Name="ProduitImages" Relationship="Self.FK_ProduitImage_Produit" FromRole="Produit" ToRole="ProduitImage" />
+          <NavigationProperty Name="ProduitLangues" Relationship="Self.FK_ProduitLangue_Produit" FromRole="Produit" ToRole="ProduitLangue" />
+        </EntityType>
+        <EntityType Name="ProduitCritere">
+          <Key>
+            <PropertyRef Name="CritereProduitId" />
+          </Key>
+          <Property Name="CritereProduitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProduitId" Type="Int32" Nullable="false" />
+          <Property Name="CritereId" Type="Int32" Nullable="false" />
+          <Property Name="LangueId" Type="Int32" Nullable="false" />
+          <Property Name="Valeur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Critere" Relationship="Self.FK_ProduitCritere_Critere" FromRole="ProduitCritere" ToRole="Critere" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK_ProduitCritere_Langue" FromRole="ProduitCritere" ToRole="Langue" />
+          <NavigationProperty Name="Produit" Relationship="Self.FK_ProduitCritere_Produit" FromRole="ProduitCritere" ToRole="Produit" />
+        </EntityType>
+        <EntityType Name="ProduitImage">
+          <Key>
+            <PropertyRef Name="ProduitImageId" />
+          </Key>
+          <Property Name="ProduitImageId" Type="Int32" Nullable="false" />
+          <Property Name="ProduitId" Type="Int32" Nullable="false" />
+          <Property Name="lien" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Produit" Relationship="Self.FK_ProduitImage_Produit" FromRole="ProduitImage" ToRole="Produit" />
+        </EntityType>
+        <EntityType Name="ProduitLangue">
+          <Key>
+            <PropertyRef Name="ProduitLangueId" />
+          </Key>
+          <Property Name="ProduitLangueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProduitId" Type="Int32" Nullable="false" />
+          <Property Name="LangueId" Type="Int32" Nullable="false" />
+          <Property Name="SEOCourt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SEOLong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContenuHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK_ProduitLangue_Langue" FromRole="ProduitLangue" ToRole="Langue" />
+          <NavigationProperty Name="Produit" Relationship="Self.FK_ProduitLangue_Produit" FromRole="ProduitLangue" ToRole="Produit" />
+        </EntityType>
+        <EntityType Name="Serie">
+          <Key>
+            <PropertyRef Name="SerieId" />
+          </Key>
+          <Property Name="SerieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EstActif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SerieLangues" Relationship="Self.FK_SerieLangue_Serie" FromRole="Serie" ToRole="SerieLangue" />
+        </EntityType>
+        <EntityType Name="SerieLangue">
+          <Key>
+            <PropertyRef Name="SerieLangueId" />
+          </Key>
+          <Property Name="SerieLangueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerieId" Type="Int32" Nullable="false" />
+          <Property Name="LangueId" Type="Int32" Nullable="false" />
+          <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImageLien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SEOCourt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SEOLong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContenuHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK_SerieLangue_Langue" FromRole="SerieLangue" ToRole="Langue" />
+          <NavigationProperty Name="Serie" Relationship="Self.FK_SerieLangue_Serie" FromRole="SerieLangue" ToRole="Serie" />
+        </EntityType>
+        <Association Name="FK_Actualite_ActualiteType">
+          <End Role="ActualiteType" Type="Self.ActualiteType" Multiplicity="1" />
+          <End Role="Actualite" Type="Self.Actualite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActualiteType">
+              <PropertyRef Name="ActualiteTypeId" />
+            </Principal>
+            <Dependent Role="Actualite">
+              <PropertyRef Name="ActualiteTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actualite_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Actualite" Type="Self.Actualite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="Actualite">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategorieCritere_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="CategorieCritere" Type="Self.CategorieCritere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="CategorieId" />
+            </Principal>
+            <Dependent Role="CategorieCritere">
+              <PropertyRef Name="CategorieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategorieLangue_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="CategorieLangue" Type="Self.CategorieLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="CategorieId" />
+            </Principal>
+            <Dependent Role="CategorieLangue">
+              <PropertyRef Name="CategorieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Produit_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Produit" Type="Self.Produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="CategorieId" />
+            </Principal>
+            <Dependent Role="Produit">
+              <PropertyRef Name="CategorieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategorieCritere_Critere">
+          <End Role="Critere" Type="Self.Critere" Multiplicity="1" />
+          <End Role="CategorieCritere" Type="Self.CategorieCritere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Critere">
+              <PropertyRef Name="CritereId" />
+            </Principal>
+            <Dependent Role="CategorieCritere">
+              <PropertyRef Name="CritereId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategorieLangue_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="CategorieLangue" Type="Self.CategorieLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="CategorieLangue">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContenuHTMLLangue_ContenuHTML">
+          <End Role="ContenuHTML" Type="Self.ContenuHTML" Multiplicity="1" />
+          <End Role="ContenuHTMLLangue" Type="Self.ContenuHTMLLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContenuHTML">
+              <PropertyRef Name="ContenuHTMLId" />
+            </Principal>
+            <Dependent Role="ContenuHTMLLangue">
+              <PropertyRef Name="ContenuHMTLId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContenuHTMLLangue_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="ContenuHTMLLangue" Type="Self.ContenuHTMLLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="ContenuHTMLLangue">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Critere_CritereFamille">
+          <End Role="CritereFamille" Type="Self.CritereFamille" Multiplicity="1" />
+          <End Role="Critere" Type="Self.Critere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CritereFamille">
+              <PropertyRef Name="CritereFamilleId" />
+            </Principal>
+            <Dependent Role="Critere">
+              <PropertyRef Name="CritereFamilleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CritereLangue_Critere">
+          <End Role="Critere" Type="Self.Critere" Multiplicity="1" />
+          <End Role="CritereLangue" Type="Self.CritereLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Critere">
+              <PropertyRef Name="CritereId" />
+            </Principal>
+            <Dependent Role="CritereLangue">
+              <PropertyRef Name="CritereId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProduitCritere_Critere">
+          <End Role="Critere" Type="Self.Critere" Multiplicity="1" />
+          <End Role="ProduitCritere" Type="Self.ProduitCritere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Critere">
+              <PropertyRef Name="CritereId" />
+            </Principal>
+            <Dependent Role="ProduitCritere">
+              <PropertyRef Name="CritereId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CritereFamilleLangue_CritereFamille">
+          <End Role="CritereFamille" Type="Self.CritereFamille" Multiplicity="1" />
+          <End Role="CritereFamilleLangue" Type="Self.CritereFamilleLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CritereFamille">
+              <PropertyRef Name="CritereFamilleId" />
+            </Principal>
+            <Dependent Role="CritereFamilleLangue">
+              <PropertyRef Name="CritereFamilleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CritereFamilleLangue_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="CritereFamilleLangue" Type="Self.CritereFamilleLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="CritereFamilleLangue">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CritereLangue_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="CritereLangue" Type="Self.CritereLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="CritereLangue">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ElementCarrousel_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="ElementCarrousel" Type="Self.ElementCarrousel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="ElementCarrousel">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProduitCritere_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="ProduitCritere" Type="Self.ProduitCritere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="ProduitCritere">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProduitLangue_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="ProduitLangue" Type="Self.ProduitLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="ProduitLangue">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerieLangue_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="SerieLangue" Type="Self.SerieLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="SerieLangue">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Menu1" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="Menu1">
+              <PropertyRef Name="MenuParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProduitCritere_Produit">
+          <End Role="Produit" Type="Self.Produit" Multiplicity="1" />
+          <End Role="ProduitCritere" Type="Self.ProduitCritere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produit">
+              <PropertyRef Name="ProduitId" />
+            </Principal>
+            <Dependent Role="ProduitCritere">
+              <PropertyRef Name="ProduitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProduitImage_Produit">
+          <End Role="Produit" Type="Self.Produit" Multiplicity="1" />
+          <End Role="ProduitImage" Type="Self.ProduitImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produit">
+              <PropertyRef Name="ProduitId" />
+            </Principal>
+            <Dependent Role="ProduitImage">
+              <PropertyRef Name="ProduitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProduitLangue_Produit">
+          <End Role="Produit" Type="Self.Produit" Multiplicity="1" />
+          <End Role="ProduitLangue" Type="Self.ProduitLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produit">
+              <PropertyRef Name="ProduitId" />
+            </Principal>
+            <Dependent Role="ProduitLangue">
+              <PropertyRef Name="ProduitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerieLangue_Serie">
+          <End Role="Serie" Type="Self.Serie" Multiplicity="1" />
+          <End Role="SerieLangue" Type="Self.SerieLangue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Serie">
+              <PropertyRef Name="SerieId" />
+            </Principal>
+            <Dependent Role="SerieLangue">
+              <PropertyRef Name="SerieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MRedEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actualites" EntityType="Self.Actualite" />
+          <EntitySet Name="ActualiteTypes" EntityType="Self.ActualiteType" />
+          <EntitySet Name="Categories" EntityType="Self.Categorie" />
+          <EntitySet Name="CategorieCriteres" EntityType="Self.CategorieCritere" />
+          <EntitySet Name="CategorieLangues" EntityType="Self.CategorieLangue" />
+          <EntitySet Name="ContenuHTMLs" EntityType="Self.ContenuHTML" />
+          <EntitySet Name="ContenuHTMLLangues" EntityType="Self.ContenuHTMLLangue" />
+          <EntitySet Name="Criteres" EntityType="Self.Critere" />
+          <EntitySet Name="CritereFamilles" EntityType="Self.CritereFamille" />
+          <EntitySet Name="CritereFamilleLangues" EntityType="Self.CritereFamilleLangue" />
+          <EntitySet Name="CritereLangues" EntityType="Self.CritereLangue" />
+          <EntitySet Name="ElementCarrousels" EntityType="Self.ElementCarrousel" />
+          <EntitySet Name="Enseignes" EntityType="Self.Enseigne" />
+          <EntitySet Name="Langues" EntityType="Self.Langue" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="Messages" EntityType="Self.Message" />
+          <EntitySet Name="Produits" EntityType="Self.Produit" />
+          <EntitySet Name="ProduitCriteres" EntityType="Self.ProduitCritere" />
+          <EntitySet Name="ProduitImages" EntityType="Self.ProduitImage" />
+          <EntitySet Name="ProduitLangues" EntityType="Self.ProduitLangue" />
+          <EntitySet Name="Series" EntityType="Self.Serie" />
+          <EntitySet Name="SerieLangues" EntityType="Self.SerieLangue" />
+          <AssociationSet Name="FK_Actualite_ActualiteType" Association="Self.FK_Actualite_ActualiteType">
+            <End Role="ActualiteType" EntitySet="ActualiteTypes" />
+            <End Role="Actualite" EntitySet="Actualites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actualite_Langue" Association="Self.FK_Actualite_Langue">
+            <End Role="Langue" EntitySet="Langues" />
+            <End Role="Actualite" EntitySet="Actualites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategorieCritere_Categorie" Association="Self.FK_CategorieCritere_Categorie">
+            <End Role="Categorie" EntitySet="Categories" />
+            <End Role="CategorieCritere" EntitySet="CategorieCriteres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategorieLangue_Categorie" Association="Self.FK_CategorieLangue_Categorie">
+            <End Role="Categorie" EntitySet="Categories" />
+            <End Role="CategorieLangue" EntitySet="CategorieLangues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Produit_Categorie" Association="Self.FK_Produit_Categorie">
+            <End Role="Categorie" EntitySet="Categories" />
+            <End Role="Produit" EntitySet="Produits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategorieCritere_Critere" Association="Self.FK_CategorieCritere_Critere">
+            <End Role="Critere" EntitySet="Criteres" />
+            <End Role="CategorieCritere" EntitySet="CategorieCriteres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategorieLangue_Langue" Association="Self.FK_CategorieLangue_Langue">
+            <End Role="Langue" EntitySet="Langues" />
+            <End Role="CategorieLangue" EntitySet="CategorieLangues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContenuHTMLLangue_ContenuHTML" Association="Self.FK_ContenuHTMLLangue_ContenuHTML">
+            <End Role="ContenuHTML" EntitySet="ContenuHTMLs" />
+            <End Role="ContenuHTMLLangue" EntitySet="ContenuHTMLLangues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContenuHTMLLangue_Langue" Association="Self.FK_ContenuHTMLLangue_Langue">
+            <End Role="Langue" EntitySet="Langues" />
+            <End Role="ContenuHTMLLangue" EntitySet="ContenuHTMLLangues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Critere_CritereFamille" Association="Self.FK_Critere_CritereFamille">
+            <End Role="CritereFamille" EntitySet="CritereFamilles" />
+            <End Role="Critere" EntitySet="Criteres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CritereLangue_Critere" Association="Self.FK_CritereLangue_Critere">
+            <End Role="Critere" EntitySet="Criteres" />
+            <End Role="CritereLangue" EntitySet="CritereLangues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProduitCritere_Critere" Association="Self.FK_ProduitCritere_Critere">
+            <End Role="Critere" EntitySet="Criteres" />
+            <End Role="ProduitCritere" EntitySet="ProduitCriteres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CritereFamilleLangue_CritereFamille" Association="Self.FK_CritereFamilleLangue_CritereFamille">
+            <End Role="CritereFamille" EntitySet="CritereFamilles" />
+            <End Role="CritereFamilleLangue" EntitySet="CritereFamilleLangues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CritereFamilleLangue_Langue" Association="Self.FK_CritereFamilleLangue_Langue">
+            <End Role="Langue" EntitySet="Langues" />
+            <End Role="CritereFamilleLangue" EntitySet="CritereFamilleLangues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CritereLangue_Langue" Association="Self.FK_CritereLangue_Langue">
+            <End Role="Langue" EntitySet="Langues" />
+            <End Role="CritereLangue" EntitySet="CritereLangues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ElementCarrousel_Langue" Association="Self.FK_ElementCarrousel_Langue">
+            <End Role="Langue" EntitySet="Langues" />
+            <End Role="ElementCarrousel" EntitySet="ElementCarrousels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Langue" Association="Self.FK_Menu_Langue">
+            <End Role="Langue" EntitySet="Langues" />
+            <End Role="Menu" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProduitCritere_Langue" Association="Self.FK_ProduitCritere_Langue">
+            <End Role="Langue" EntitySet="Langues" />
+            <End Role="ProduitCritere" EntitySet="ProduitCriteres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProduitLangue_Langue" Association="Self.FK_ProduitLangue_Langue">
+            <End Role="Langue" EntitySet="Langues" />
+            <End Role="ProduitLangue" EntitySet="ProduitLangues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerieLangue_Langue" Association="Self.FK_SerieLangue_Langue">
+            <End Role="Langue" EntitySet="Langues" />
+            <End Role="SerieLangue" EntitySet="SerieLangues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Menu" Association="Self.FK_Menu_Menu">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="Menu1" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProduitCritere_Produit" Association="Self.FK_ProduitCritere_Produit">
+            <End Role="Produit" EntitySet="Produits" />
+            <End Role="ProduitCritere" EntitySet="ProduitCriteres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProduitImage_Produit" Association="Self.FK_ProduitImage_Produit">
+            <End Role="Produit" EntitySet="Produits" />
+            <End Role="ProduitImage" EntitySet="ProduitImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProduitLangue_Produit" Association="Self.FK_ProduitLangue_Produit">
+            <End Role="Produit" EntitySet="Produits" />
+            <End Role="ProduitLangue" EntitySet="ProduitLangues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerieLangue_Serie" Association="Self.FK_SerieLangue_Serie">
+            <End Role="Serie" EntitySet="Series" />
+            <End Role="SerieLangue" EntitySet="SerieLangues" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MRedModelStoreContainer" CdmEntityContainer="MRedEntities">
+          <EntitySetMapping Name="Actualites">
+            <EntityTypeMapping TypeName="MRedModel.Actualite">
+              <MappingFragment StoreEntitySet="Actualite">
+                <ScalarProperty Name="ActualiteId" ColumnName="ActualiteId" />
+                <ScalarProperty Name="ActualiteTypeId" ColumnName="ActualiteTypeId" />
+                <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+                <ScalarProperty Name="DateCreation" ColumnName="DateCreation" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="SEOCourt" ColumnName="SEOCourt" />
+                <ScalarProperty Name="SEOLong" ColumnName="SEOLong" />
+                <ScalarProperty Name="Contenu" ColumnName="Contenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActualiteTypes">
+            <EntityTypeMapping TypeName="MRedModel.ActualiteType">
+              <MappingFragment StoreEntitySet="ActualiteType">
+                <ScalarProperty Name="ActualiteTypeId" ColumnName="ActualiteTypeId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="MRedModel.Categorie">
+              <MappingFragment StoreEntitySet="Categorie">
+                <ScalarProperty Name="CategorieId" ColumnName="CategorieId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="EstActif" ColumnName="EstActif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategorieCriteres">
+            <EntityTypeMapping TypeName="MRedModel.CategorieCritere">
+              <MappingFragment StoreEntitySet="CategorieCritere">
+                <ScalarProperty Name="CritereCategorieId" ColumnName="CritereCategorieId" />
+                <ScalarProperty Name="CategorieId" ColumnName="CategorieId" />
+                <ScalarProperty Name="CritereId" ColumnName="CritereId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategorieLangues">
+            <EntityTypeMapping TypeName="MRedModel.CategorieLangue">
+              <MappingFragment StoreEntitySet="CategorieLangue">
+                <ScalarProperty Name="CategorieLangueId" ColumnName="CategorieLangueId" />
+                <ScalarProperty Name="CategorieId" ColumnName="CategorieId" />
+                <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="ImageLien" ColumnName="ImageLien" />
+                <ScalarProperty Name="SEOCourt" ColumnName="SEOCourt" />
+                <ScalarProperty Name="SEOLong" ColumnName="SEOLong" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ContenuHTML" ColumnName="ContenuHTML" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContenuHTMLs">
+            <EntityTypeMapping TypeName="MRedModel.ContenuHTML">
+              <MappingFragment StoreEntitySet="ContenuHTML">
+                <ScalarProperty Name="ContenuHTMLId" ColumnName="ContenuHTMLId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContenuHTMLLangues">
+            <EntityTypeMapping TypeName="MRedModel.ContenuHTMLLangue">
+              <MappingFragment StoreEntitySet="ContenuHTMLLangue">
+                <ScalarProperty Name="ContenuHTMLLangueId" ColumnName="ContenuHTMLLangueId" />
+                <ScalarProperty Name="ContenuHMTLId" ColumnName="ContenuHMTLId" />
+                <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+                <ScalarProperty Name="ContenuHTML" ColumnName="ContenuHTML" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Criteres">
+            <EntityTypeMapping TypeName="MRedModel.Critere">
+              <MappingFragment StoreEntitySet="Critere">
+                <ScalarProperty Name="CritereId" ColumnName="CritereId" />
+                <ScalarProperty Name="CritereFamilleId" ColumnName="CritereFamilleId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CritereFamilles">
+            <EntityTypeMapping TypeName="MRedModel.CritereFamille">
+              <MappingFragment StoreEntitySet="CritereFamille">
+                <ScalarProperty Name="CritereFamilleId" ColumnName="CritereFamilleId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CritereFamilleLangues">
+            <EntityTypeMapping TypeName="MRedModel.CritereFamilleLangue">
+              <MappingFragment StoreEntitySet="CritereFamilleLangue">
+                <ScalarProperty Name="CritereFamilleLangueId" ColumnName="CritereFamilleLangueId" />
+                <ScalarProperty Name="CritereFamilleId" ColumnName="CritereFamilleId" />
+                <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CritereLangues">
+            <EntityTypeMapping TypeName="MRedModel.CritereLangue">
+              <MappingFragment StoreEntitySet="CritereLangue">
+                <ScalarProperty Name="CritereLangueId" ColumnName="CritereLangueId" />
+                <ScalarProperty Name="CritereId" ColumnName="CritereId" />
+                <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="Unite" ColumnName="Unite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ElementCarrousels">
+            <EntityTypeMapping TypeName="MRedModel.ElementCarrousel">
+              <MappingFragment StoreEntitySet="ElementCarrousel">
+                <ScalarProperty Name="ElementCarrouselId" ColumnName="ElementCarrouselId" />
+                <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="Titre" ColumnName="Titre" />
+                <ScalarProperty Name="Contenu" ColumnName="Contenu" />
+                <ScalarProperty Name="TexteBouton" ColumnName="TexteBouton" />
+                <ScalarProperty Name="LienBouton" ColumnName="LienBouton" />
+                <ScalarProperty Name="LienImage" ColumnName="LienImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enseignes">
+            <EntityTypeMapping TypeName="MRedModel.Enseigne">
+              <MappingFragment StoreEntitySet="Enseigne">
+                <ScalarProperty Name="EnseigneId" ColumnName="EnseigneId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="LienImage" ColumnName="LienImage" />
+                <ScalarProperty Name="LienEnseigne" ColumnName="LienEnseigne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Langues">
+            <EntityTypeMapping TypeName="MRedModel.Langue">
+              <MappingFragment StoreEntitySet="Langue">
+                <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="MRedModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="MenuParentId" ColumnName="MenuParentId" />
+                <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="Lien" ColumnName="Lien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="MRedModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Societe" ColumnName="Societe" />
+                <ScalarProperty Name="Objet" ColumnName="Objet" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Contenu" ColumnName="Contenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produits">
+            <EntityTypeMapping TypeName="MRedModel.Produit">
+              <MappingFragment StoreEntitySet="Produit">
+                <ScalarProperty Name="ProduitId" ColumnName="ProduitId" />
+                <ScalarProperty Name="CategorieId" ColumnName="CategorieId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="EstActif" ColumnName="EstActif" />
+                <ScalarProperty Name="EAN" ColumnName="EAN" />
+                <ScalarProperty Name="ProduitIdJAJA" ColumnName="ProduitIdJAJA" />
+                <ScalarProperty Name="SerieId" ColumnName="SerieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProduitCriteres">
+            <EntityTypeMapping TypeName="MRedModel.ProduitCritere">
+              <MappingFragment StoreEntitySet="ProduitCritere">
+                <ScalarProperty Name="CritereProduitId" ColumnName="CritereProduitId" />
+                <ScalarProperty Name="ProduitId" ColumnName="ProduitId" />
+                <ScalarProperty Name="CritereId" ColumnName="CritereId" />
+                <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+                <ScalarProperty Name="Valeur" ColumnName="Valeur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProduitImages">
+            <EntityTypeMapping TypeName="MRedModel.ProduitImage">
+              <MappingFragment StoreEntitySet="ProduitImage">
+                <ScalarProperty Name="ProduitImageId" ColumnName="ProduitImageId" />
+                <ScalarProperty Name="ProduitId" ColumnName="ProduitId" />
+                <ScalarProperty Name="lien" ColumnName="lien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProduitLangues">
+            <EntityTypeMapping TypeName="MRedModel.ProduitLangue">
+              <MappingFragment StoreEntitySet="ProduitLangue">
+                <ScalarProperty Name="ProduitLangueId" ColumnName="ProduitLangueId" />
+                <ScalarProperty Name="ProduitId" ColumnName="ProduitId" />
+                <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+                <ScalarProperty Name="SEOCourt" ColumnName="SEOCourt" />
+                <ScalarProperty Name="SEOLong" ColumnName="SEOLong" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ContenuHTML" ColumnName="ContenuHTML" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Series">
+            <EntityTypeMapping TypeName="MRedModel.Serie">
+              <MappingFragment StoreEntitySet="Serie">
+                <ScalarProperty Name="SerieId" ColumnName="SerieId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="EstActif" ColumnName="EstActif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SerieLangues">
+            <EntityTypeMapping TypeName="MRedModel.SerieLangue">
+              <MappingFragment StoreEntitySet="SerieLangue">
+                <ScalarProperty Name="SerieLangueId" ColumnName="SerieLangueId" />
+                <ScalarProperty Name="SerieId" ColumnName="SerieId" />
+                <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="ImageLien" ColumnName="ImageLien" />
+                <ScalarProperty Name="SEOCourt" ColumnName="SEOCourt" />
+                <ScalarProperty Name="SEOLong" ColumnName="SEOLong" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ContenuHTML" ColumnName="ContenuHTML" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
